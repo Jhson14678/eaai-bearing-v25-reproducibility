@@ -6,17 +6,28 @@ the paired sensor. The first 56% is training, the next 14% tunes the threshold,
 and the final 30% is a completely held-out time segment.
 """
 from pathlib import Path
-import sys, json
+import sys, json, os
 from collections import defaultdict
 from datetime import datetime
 import numpy as np
 import torch
 from scipy.io import loadmat
 ROOT=Path(__file__).resolve().parents[1]
-sys.path.insert(0,str(ROOT/'revision_stage12_20260912')); sys.path.insert(0,str(ROOT/'eaai_three_reviews_20260910'/'packet'))
-from run_sca_field_external import feat
+CODE=Path(__file__).resolve().parent
+sys.path.insert(0,str(CODE))
+if not (CODE/'run_hust_zero_shot_models.py').exists():
+    sys.path.insert(0,str(ROOT/'eaai_three_reviews_20260910'/'packet'))
+from scipy.signal import hilbert, resample_poly
 from run_hust_zero_shot_models import DirectMLP, train as train_direct, predict, aggregate, metrics, seed_all
-FIELD=ROOT/'revision_stage12_20260912'/'sca_field_raw'; OUT=ROOT/'revision_stage12_20260912'/'sca_field_results_strict'; OUT.mkdir(parents=True,exist_ok=True)
+default_field=ROOT/'revision_stage12_20260912'/'sca_field_raw' if (ROOT/'revision_stage12_20260912'/'sca_field_raw').exists() else ROOT/'sca_field_raw'
+default_out=ROOT/'revision_stage12_20260912'/'sca_field_results_strict' if (ROOT/'revision_stage12_20260912').exists() else ROOT/'results'/'strict_case_retraining'
+FIELD=Path(os.environ.get('SCA_FIELD_ROOT',str(default_field))); OUT=Path(os.environ.get('SCA_OUTPUT_ROOT',str(default_out))); OUT.mkdir(parents=True,exist_ok=True)
+
+def feat(x,sr,shaft):
+    z=resample_poly(np.asarray(x,dtype=np.float64).reshape(-1),51200,max(1,int(round(float(sr))))); fs=[]
+    for i in range(min(10,z.size//51200)):
+        w=z[i*51200:(i+1)*51200]; w=w-w.mean(); raw=np.abs(np.fft.rfft(np.abs(hilbert(w)))); freq=np.fft.rfftfreq(51200,d=1.0/51200.0); order=freq/max(float(shaft),1e-6); centers=np.linspace(.10,20.0,100); s=np.interp(centers,order,np.log1p(raw)).astype(np.float32); fs.append((s-s.mean())/(s.std()+1e-6))
+    return np.mean(fs,axis=0).astype(np.float32) if fs else np.zeros(100,dtype=np.float32)
 
 def load_test_only():
     rows=[]
