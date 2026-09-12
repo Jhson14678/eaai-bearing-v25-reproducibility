@@ -14,6 +14,8 @@ The strict field retraining protocol uses only case 1–3 `test.mat` files. DS a
 
 The strict result is Macro-F1 = 0.5116 (SD 0.0245), Jaccard = 0.8512, exact set match = 0.8512, healthy-record false-alarm rate = 0.0034, fault-record recall = 0.5040, and device-case event recall = 2/3. The two detected case events have lead times of 37.4 and 8.8 days, respectively. The result supports only retrospective conditional utility after same-case supervised retraining; it does not establish cross-device or universal field effectiveness.
 
+The proposed non-negative candidate was also retrained under the identical protocol. It obtained Macro-F1 = 0.5053 (SD 0.0969), fault-record recall = 0.4880, and healthy-record false-alarm rate = 0.0067. It did not outperform DirectMLP in this small field comparison, so the field experiment is not presented as evidence of candidate-model superiority.
+
 ## Archive step before submission
 
 The public archive is available at <https://github.com/Jhson14678/eaai-bearing-v25-reproducibility>. The manuscript Data Availability statement cites this URL.
