@@ -16,4 +16,4 @@ Mean Macro-F1 = 0.2960 (SD 0.0115), Jaccard = 0.7198, exact set match = 0.7198, 
 
 ## Archive step before submission
 
-Upload this directory or its ZIP archive to a public Git repository or DOI-bearing archive, preserve the resulting persistent URL/version, and add that URL to the manuscript Data Availability statement.
+The public archive is available at <https://github.com/Jhson14678/eaai-bearing-v25-reproducibility>. The manuscript Data Availability statement cites this URL.
