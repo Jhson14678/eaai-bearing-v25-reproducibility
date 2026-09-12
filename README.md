@@ -17,3 +17,7 @@ The strict result is Macro-F1 = 0.5116 (SD 0.0245), Jaccard = 0.8512, exact set 
 ## Archive step before submission
 
 The public archive is available at <https://github.com/Jhson14678/eaai-bearing-v25-reproducibility>. The manuscript Data Availability statement cites this URL.
+
+## Re-run entry point
+
+Install the pinned packages in `requirements.txt`, download the SCA V1 public files, and set `SCA_FIELD_ROOT` to the directory containing `case1_test.mat`, `case2_test.mat`, and `case3_test.mat`. Run `python code/run_sca_strict_case_retraining.py`. Set `SCA_OUTPUT_ROOT` to choose the result directory. The script writes the five-seed predictions and `strict_results.json`.
