@@ -1,0 +1,317 @@
+{
+  "protocol": "same HUST development group cross-fit; 35 epochs, lr 0.002, 3 seeds; one mechanism changed at a time",
+  "variants": [
+    {
+      "variant": "full",
+      "runs": [
+        {
+          "threshold": 0.69,
+          "per_component_f1": [
+            0.851063829787234,
+            0.5365853658536586,
+            0.6153846153846154
+          ],
+          "macro_f1": 0.6676779370085026,
+          "mean_set_jaccard": 0.5119047619047619,
+          "exact_set_match": 0.11904761904761904,
+          "n_files": 42,
+          "n_groups": 14,
+          "seed": 11
+        },
+        {
+          "threshold": 0.6,
+          "per_component_f1": [
+            0.9411764705882353,
+            0.5909090909090909,
+            0.65
+          ],
+          "macro_f1": 0.7273618538324421,
+          "mean_set_jaccard": 0.5912698412698413,
+          "exact_set_match": 0.23809523809523808,
+          "n_files": 42,
+          "n_groups": 14,
+          "seed": 22
+        },
+        {
+          "threshold": 0.67,
+          "per_component_f1": [
+            0.875,
+            0.5,
+            0.0
+          ],
+          "macro_f1": 0.4583333333333333,
+          "mean_set_jaccard": 0.36904761904761907,
+          "exact_set_match": 0.047619047619047616,
+          "n_files": 42,
+          "n_groups": 14,
+          "seed": 33
+        }
+      ],
+      "mean_macro_f1": 0.617791041391426,
+      "std_macro_f1": 0.14128203345159168,
+      "mean_jaccard": 0.49074074074074076,
+      "std_jaccard": 0.1126126807078982,
+      "mean_exact": 0.1349206349206349
+    },
+    {
+      "variant": "without_reconstruction",
+      "runs": [
+        {
+          "threshold": 0.62,
+          "per_component_f1": [
+            0.8979591836734694,
+            0.5777777777777777,
+            0.65
+          ],
+          "macro_f1": 0.7085789871504157,
+          "mean_set_jaccard": 0.5634920634920635,
+          "exact_set_match": 0.16666666666666666,
+          "n_files": 42,
+          "n_groups": 14,
+          "seed": 11
+        },
+        {
+          "threshold": 0.65,
+          "per_component_f1": [
+            0.875,
+            0.5,
+            0.65
+          ],
+          "macro_f1": 0.6749999999999999,
+          "mean_set_jaccard": 0.5238095238095238,
+          "exact_set_match": 0.14285714285714285,
+          "n_files": 42,
+          "n_groups": 14,
+          "seed": 22
+        },
+        {
+          "threshold": 0.67,
+          "per_component_f1": [
+            0.0,
+            0.5365853658536586,
+            0.0
+          ],
+          "macro_f1": 0.17886178861788618,
+          "mean_set_jaccard": 0.13095238095238096,
+          "exact_set_match": 0.0,
+          "n_files": 42,
+          "n_groups": 14,
+          "seed": 33
+        }
+      ],
+      "mean_macro_f1": 0.5208135919227673,
+      "std_macro_f1": 0.29661450391393035,
+      "mean_jaccard": 0.4060846560846561,
+      "std_jaccard": 0.23909622038733805,
+      "mean_exact": 0.10317460317460318
+    },
+    {
+      "variant": "without_union",
+      "runs": [
+        {
+          "threshold": 0.64,
+          "per_component_f1": [
+            0.851063829787234,
+            0.6046511627906976,
+            0.5405405405405406
+          ],
+          "macro_f1": 0.6654185110394908,
+          "mean_set_jaccard": 0.5119047619047619,
+          "exact_set_match": 0.047619047619047616,
+          "n_files": 42,
+          "n_groups": 14,
+          "seed": 11
+        },
+        {
+          "threshold": 0.62,
+          "per_component_f1": [
+            0.8979591836734694,
+            0.5909090909090909,
+            0.65
+          ],
+          "macro_f1": 0.71295609152752,
+          "mean_set_jaccard": 0.5674603174603174,
+          "exact_set_match": 0.16666666666666666,
+          "n_files": 42,
+          "n_groups": 14,
+          "seed": 22
+        },
+        {
+          "threshold": 0.7,
+          "per_component_f1": [
+            0.0,
+            0.46153846153846156,
+            0.5405405405405406
+          ],
+          "macro_f1": 0.334026334026334,
+          "mean_set_jaccard": 0.2261904761904762,
+          "exact_set_match": 0.023809523809523808,
+          "n_files": 42,
+          "n_groups": 14,
+          "seed": 33
+        }
+      ],
+      "mean_macro_f1": 0.5708003121977817,
+      "std_macro_f1": 0.20642527205750227,
+      "mean_jaccard": 0.4351851851851852,
+      "std_jaccard": 0.18311388868436201,
+      "mean_exact": 0.07936507936507936
+    },
+    {
+      "variant": "without_coherence",
+      "runs": [
+        {
+          "threshold": 0.69,
+          "per_component_f1": [
+            0.851063829787234,
+            0.5365853658536586,
+            0.6153846153846154
+          ],
+          "macro_f1": 0.6676779370085026,
+          "mean_set_jaccard": 0.5119047619047619,
+          "exact_set_match": 0.11904761904761904,
+          "n_files": 42,
+          "n_groups": 14,
+          "seed": 11
+        },
+        {
+          "threshold": 0.62,
+          "per_component_f1": [
+            0.8979591836734694,
+            0.5365853658536586,
+            0.65
+          ],
+          "macro_f1": 0.6948481831757093,
+          "mean_set_jaccard": 0.5476190476190477,
+          "exact_set_match": 0.16666666666666666,
+          "n_files": 42,
+          "n_groups": 14,
+          "seed": 22
+        },
+        {
+          "threshold": 0.65,
+          "per_component_f1": [
+            0.92,
+            0.5714285714285714,
+            0.0
+          ],
+          "macro_f1": 0.49714285714285716,
+          "mean_set_jaccard": 0.4166666666666667,
+          "exact_set_match": 0.09523809523809523,
+          "n_files": 42,
+          "n_groups": 14,
+          "seed": 33
+        }
+      ],
+      "mean_macro_f1": 0.6198896591090229,
+      "std_macro_f1": 0.10716640618163654,
+      "mean_jaccard": 0.4920634920634921,
+      "std_jaccard": 0.06769334170330152,
+      "mean_exact": 0.12698412698412698
+    },
+    {
+      "variant": "one_decoder_step",
+      "runs": [
+        {
+          "threshold": 0.6799999999999999,
+          "per_component_f1": [
+            0.851063829787234,
+            0.5,
+            0.5789473684210527
+          ],
+          "macro_f1": 0.6433370660694289,
+          "mean_set_jaccard": 0.4880952380952381,
+          "exact_set_match": 0.09523809523809523,
+          "n_files": 42,
+          "n_groups": 14,
+          "seed": 11
+        },
+        {
+          "threshold": 0.62,
+          "per_component_f1": [
+            0.851063829787234,
+            0.5365853658536586,
+            0.65
+          ],
+          "macro_f1": 0.6792163985469641,
+          "mean_set_jaccard": 0.5238095238095238,
+          "exact_set_match": 0.11904761904761904,
+          "n_files": 42,
+          "n_groups": 14,
+          "seed": 22
+        },
+        {
+          "threshold": 0.7,
+          "per_component_f1": [
+            0.851063829787234,
+            0.42105263157894735,
+            0.5
+          ],
+          "macro_f1": 0.5907054871220604,
+          "mean_set_jaccard": 0.44047619047619047,
+          "exact_set_match": 0.047619047619047616,
+          "n_files": 42,
+          "n_groups": 14,
+          "seed": 33
+        }
+      ],
+      "mean_macro_f1": 0.6377529839128178,
+      "std_macro_f1": 0.04451889307322932,
+      "mean_jaccard": 0.48412698412698413,
+      "std_jaccard": 0.04180814981290771,
+      "mean_exact": 0.08730158730158728
+    },
+    {
+      "variant": "without_alignment_loss",
+      "runs": [
+        {
+          "threshold": 0.69,
+          "per_component_f1": [
+            0.8260869565217391,
+            0.5365853658536586,
+            0.5789473684210527
+          ],
+          "macro_f1": 0.6472065635988168,
+          "mean_set_jaccard": 0.4880952380952381,
+          "exact_set_match": 0.07142857142857142,
+          "n_files": 42,
+          "n_groups": 14,
+          "seed": 11
+        },
+        {
+          "threshold": 0.6,
+          "per_component_f1": [
+            0.9411764705882353,
+            0.5909090909090909,
+            0.65
+          ],
+          "macro_f1": 0.7273618538324421,
+          "mean_set_jaccard": 0.5912698412698413,
+          "exact_set_match": 0.23809523809523808,
+          "n_files": 42,
+          "n_groups": 14,
+          "seed": 22
+        },
+        {
+          "threshold": 0.65,
+          "per_component_f1": [
+            0.92,
+            0.5365853658536586,
+            0.0
+          ],
+          "macro_f1": 0.48552845528455285,
+          "mean_set_jaccard": 0.40476190476190477,
+          "exact_set_match": 0.09523809523809523,
+          "n_files": 42,
+          "n_groups": 14,
+          "seed": 33
+        }
+      ],
+      "mean_macro_f1": 0.6200322909052706,
+      "std_macro_f1": 0.12318554698349547,
+      "mean_jaccard": 0.4947089947089947,
+      "std_jaccard": 0.09342970045719737,
+      "mean_exact": 0.1349206349206349
+    }
+  ]
+}
