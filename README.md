@@ -28,4 +28,4 @@ Install `requirements.txt`, set `SCA_FIELD_ROOT` to the directory containing `ca
 python code/run_sca_strict_case_retraining.py
 ```
 
-Set `SCA_OUTPUT_ROOT` to choose the result directory. The default is native-rate features and elapsed-time splitting. The archive is available at <https://github.com/Jhson14678/eaai-bearing-v25-reproducibility> (master commit `a9f7df1`).
+Set `SCA_OUTPUT_ROOT` to choose the result directory. The default is native-rate features and elapsed-time splitting. The archive is available at <https://github.com/Jhson14678/eaai-bearing-v25-reproducibility> (release `v31.2` (master commit `3d117e8`)).
