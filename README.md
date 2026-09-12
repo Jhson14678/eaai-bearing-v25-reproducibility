@@ -25,3 +25,7 @@ The public archive is available at <https://github.com/Jhson14678/eaai-bearing-v
 ## Re-run entry point
 
 Install the pinned packages in `requirements.txt`, download the SCA V1 public files, and set `SCA_FIELD_ROOT` to the directory containing `case1_test.mat`, `case2_test.mat`, and `case3_test.mat`. Run `python code/run_sca_strict_case_retraining.py`. Set `SCA_OUTPUT_ROOT` to choose the result directory. The script writes the five-seed predictions and `strict_results.json`.
+
+## Alarm persistence sensitivity
+
+`code/evaluate_alarm_persistence.py` applies post-hoc persistence rules to the frozen strict holdout predictions. Requiring 1, 2, or 3 consecutive positive records gives device-case event recall 2/3 in all five seeds. The mean healthy sensor-group event false-alarm rate is 0.1333 for one positive record and 0 for both two- and three-record persistence; mean lead time is 23.10, 23.10, and 20.61 days, respectively. This is an alarm-rule sensitivity analysis, not a new trained result.

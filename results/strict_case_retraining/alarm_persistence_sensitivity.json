@@ -1,0 +1,215 @@
+{
+  "protocol": "post-hoc persistence sensitivity on strict holdout predictions; no thresholds changed",
+  "results": [
+    {
+      "seed": 11,
+      "k": 1,
+      "fault_event_recall": 0.6666666666666666,
+      "fault_events": 3,
+      "detected_fault_events": 2,
+      "healthy_sensor_event_far": 0.3333333333333333,
+      "healthy_sensor_groups": 3,
+      "lead_days_mean": 23.10356880787037,
+      "lead_days": [
+        37.41583923611111,
+        8.79129837962963
+      ]
+    },
+    {
+      "seed": 11,
+      "k": 2,
+      "fault_event_recall": 0.6666666666666666,
+      "fault_events": 3,
+      "detected_fault_events": 2,
+      "healthy_sensor_event_far": 0.0,
+      "healthy_sensor_groups": 3,
+      "lead_days_mean": 23.10356880787037,
+      "lead_days": [
+        37.41583923611111,
+        8.79129837962963
+      ]
+    },
+    {
+      "seed": 11,
+      "k": 3,
+      "fault_event_recall": 0.6666666666666666,
+      "fault_events": 3,
+      "detected_fault_events": 2,
+      "healthy_sensor_event_far": 0.0,
+      "healthy_sensor_groups": 3,
+      "lead_days_mean": 21.187016550925925,
+      "lead_days": [
+        33.58273472222222,
+        8.79129837962963
+      ]
+    },
+    {
+      "seed": 22,
+      "k": 1,
+      "fault_event_recall": 0.6666666666666666,
+      "fault_events": 3,
+      "detected_fault_events": 2,
+      "healthy_sensor_event_far": 0.3333333333333333,
+      "healthy_sensor_groups": 3,
+      "lead_days_mean": 23.10356880787037,
+      "lead_days": [
+        37.41583923611111,
+        8.79129837962963
+      ]
+    },
+    {
+      "seed": 22,
+      "k": 2,
+      "fault_event_recall": 0.6666666666666666,
+      "fault_events": 3,
+      "detected_fault_events": 2,
+      "healthy_sensor_event_far": 0.0,
+      "healthy_sensor_groups": 3,
+      "lead_days_mean": 23.10356880787037,
+      "lead_days": [
+        37.41583923611111,
+        8.79129837962963
+      ]
+    },
+    {
+      "seed": 22,
+      "k": 3,
+      "fault_event_recall": 0.6666666666666666,
+      "fault_events": 3,
+      "detected_fault_events": 2,
+      "healthy_sensor_event_far": 0.0,
+      "healthy_sensor_groups": 3,
+      "lead_days_mean": 21.187016550925925,
+      "lead_days": [
+        33.58273472222222,
+        8.79129837962963
+      ]
+    },
+    {
+      "seed": 33,
+      "k": 1,
+      "fault_event_recall": 0.6666666666666666,
+      "fault_events": 3,
+      "detected_fault_events": 2,
+      "healthy_sensor_event_far": 0.0,
+      "healthy_sensor_groups": 3,
+      "lead_days_mean": 23.10356880787037,
+      "lead_days": [
+        37.41583923611111,
+        8.79129837962963
+      ]
+    },
+    {
+      "seed": 33,
+      "k": 2,
+      "fault_event_recall": 0.6666666666666666,
+      "fault_events": 3,
+      "detected_fault_events": 2,
+      "healthy_sensor_event_far": 0.0,
+      "healthy_sensor_groups": 3,
+      "lead_days_mean": 23.10356880787037,
+      "lead_days": [
+        37.41583923611111,
+        8.79129837962963
+      ]
+    },
+    {
+      "seed": 33,
+      "k": 3,
+      "fault_event_recall": 0.6666666666666666,
+      "fault_events": 3,
+      "detected_fault_events": 2,
+      "healthy_sensor_event_far": 0.0,
+      "healthy_sensor_groups": 3,
+      "lead_days_mean": 19.749546585648147,
+      "lead_days": [
+        33.58273472222222,
+        5.916358449074074
+      ]
+    },
+    {
+      "seed": 44,
+      "k": 1,
+      "fault_event_recall": 0.6666666666666666,
+      "fault_events": 3,
+      "detected_fault_events": 2,
+      "healthy_sensor_event_far": 0.0,
+      "healthy_sensor_groups": 3,
+      "lead_days_mean": 23.10356880787037,
+      "lead_days": [
+        37.41583923611111,
+        8.79129837962963
+      ]
+    },
+    {
+      "seed": 44,
+      "k": 2,
+      "fault_event_recall": 0.6666666666666666,
+      "fault_events": 3,
+      "detected_fault_events": 2,
+      "healthy_sensor_event_far": 0.0,
+      "healthy_sensor_groups": 3,
+      "lead_days_mean": 23.10356880787037,
+      "lead_days": [
+        37.41583923611111,
+        8.79129837962963
+      ]
+    },
+    {
+      "seed": 44,
+      "k": 3,
+      "fault_event_recall": 0.6666666666666666,
+      "fault_events": 3,
+      "detected_fault_events": 2,
+      "healthy_sensor_event_far": 0.0,
+      "healthy_sensor_groups": 3,
+      "lead_days_mean": 19.749546585648147,
+      "lead_days": [
+        33.58273472222222,
+        5.916358449074074
+      ]
+    },
+    {
+      "seed": 55,
+      "k": 1,
+      "fault_event_recall": 0.6666666666666666,
+      "fault_events": 3,
+      "detected_fault_events": 2,
+      "healthy_sensor_event_far": 0.0,
+      "healthy_sensor_groups": 3,
+      "lead_days_mean": 23.10356880787037,
+      "lead_days": [
+        37.41583923611111,
+        8.79129837962963
+      ]
+    },
+    {
+      "seed": 55,
+      "k": 2,
+      "fault_event_recall": 0.6666666666666666,
+      "fault_events": 3,
+      "detected_fault_events": 2,
+      "healthy_sensor_event_far": 0.0,
+      "healthy_sensor_groups": 3,
+      "lead_days_mean": 23.10356880787037,
+      "lead_days": [
+        37.41583923611111,
+        8.79129837962963
+      ]
+    },
+    {
+      "seed": 55,
+      "k": 3,
+      "fault_event_recall": 0.6666666666666666,
+      "fault_events": 3,
+      "detected_fault_events": 2,
+      "healthy_sensor_event_far": 0.0,
+      "healthy_sensor_groups": 3,
+      "lead_days_mean": 21.187016550925925,
+      "lead_days": [
+        33.58273472222222,
+        8.79129837962963
+      ]
+    }
+  ]
+}
