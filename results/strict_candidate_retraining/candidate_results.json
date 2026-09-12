@@ -1,0 +1,153 @@
+{
+  "protocol": "same strict case-level 56/14/30 temporal split as DirectMLP; candidate CompositionModel from random initialization; no post-replacement train data",
+  "runs": [
+    {
+      "threshold": 0.87,
+      "per_component_f1": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "macro_f1": 0.3333333333333333,
+      "mean_set_jaccard": 0.7519685039370079,
+      "exact_set_match": 0.7519685039370079,
+      "n_files": 254,
+      "n_groups": 6,
+      "seed": 11,
+      "healthy_false_alarm_rate": 0.0,
+      "fault_file_recall": 0.16,
+      "holdout_n": 254,
+      "holdout_healthy_n": 179,
+      "holdout_fault_n": 75,
+      "fault_event_recall": 0.3333333333333333,
+      "fault_event_n": 3,
+      "fault_event_detected": 1,
+      "event_lead_days_mean": 8.79129837962963,
+      "event_lead_days": [
+        8.79129837962963
+      ]
+    },
+    {
+      "threshold": 0.87,
+      "per_component_f1": [
+        0.7070707070707071,
+        1.0,
+        0.0
+      ],
+      "macro_f1": 0.5690235690235691,
+      "mean_set_jaccard": 0.8858267716535433,
+      "exact_set_match": 0.8858267716535433,
+      "n_files": 254,
+      "n_groups": 6,
+      "seed": 22,
+      "healthy_false_alarm_rate": 0.00558659217877095,
+      "fault_file_recall": 0.6266666666666667,
+      "holdout_n": 254,
+      "holdout_healthy_n": 179,
+      "holdout_fault_n": 75,
+      "fault_event_recall": 0.6666666666666666,
+      "fault_event_n": 3,
+      "fault_event_detected": 2,
+      "event_lead_days_mean": 23.10356880787037,
+      "event_lead_days": [
+        37.41583923611111,
+        8.79129837962963
+      ]
+    },
+    {
+      "threshold": 0.82,
+      "per_component_f1": [
+        0.6170212765957447,
+        1.0,
+        0.0
+      ],
+      "macro_f1": 0.5390070921985816,
+      "mean_set_jaccard": 0.8582677165354331,
+      "exact_set_match": 0.8582677165354331,
+      "n_files": 254,
+      "n_groups": 6,
+      "seed": 33,
+      "healthy_false_alarm_rate": 0.0111731843575419,
+      "fault_file_recall": 0.5466666666666666,
+      "holdout_n": 254,
+      "holdout_healthy_n": 179,
+      "holdout_fault_n": 75,
+      "fault_event_recall": 0.6666666666666666,
+      "fault_event_n": 3,
+      "fault_event_detected": 2,
+      "event_lead_days_mean": 23.10356880787037,
+      "event_lead_days": [
+        37.41583923611111,
+        8.79129837962963
+      ]
+    },
+    {
+      "threshold": 0.84,
+      "per_component_f1": [
+        0.6170212765957447,
+        1.0,
+        0.0
+      ],
+      "macro_f1": 0.5390070921985816,
+      "mean_set_jaccard": 0.8582677165354331,
+      "exact_set_match": 0.8582677165354331,
+      "n_files": 254,
+      "n_groups": 6,
+      "seed": 44,
+      "healthy_false_alarm_rate": 0.0111731843575419,
+      "fault_file_recall": 0.5466666666666666,
+      "holdout_n": 254,
+      "holdout_healthy_n": 179,
+      "holdout_fault_n": 75,
+      "fault_event_recall": 0.6666666666666666,
+      "fault_event_n": 3,
+      "fault_event_detected": 2,
+      "event_lead_days_mean": 23.10356880787037,
+      "event_lead_days": [
+        37.41583923611111,
+        8.79129837962963
+      ]
+    },
+    {
+      "threshold": 0.87,
+      "per_component_f1": [
+        0.6382978723404256,
+        1.0,
+        0.0
+      ],
+      "macro_f1": 0.5460992907801419,
+      "mean_set_jaccard": 0.8661417322834646,
+      "exact_set_match": 0.8661417322834646,
+      "n_files": 254,
+      "n_groups": 6,
+      "seed": 55,
+      "healthy_false_alarm_rate": 0.00558659217877095,
+      "fault_file_recall": 0.56,
+      "holdout_n": 254,
+      "holdout_healthy_n": 179,
+      "holdout_fault_n": 75,
+      "fault_event_recall": 0.6666666666666666,
+      "fault_event_n": 3,
+      "fault_event_detected": 2,
+      "event_lead_days_mean": 23.10356880787037,
+      "event_lead_days": [
+        37.41583923611111,
+        8.79129837962963
+      ]
+    }
+  ],
+  "mean_macro_f1": 0.5052940755068415,
+  "std_macro_f1": 0.09691509915278664,
+  "mean_mean_set_jaccard": 0.8440944881889765,
+  "std_mean_set_jaccard": 0.05271769682289921,
+  "mean_exact_set_match": 0.8440944881889765,
+  "std_exact_set_match": 0.05271769682289921,
+  "mean_healthy_false_alarm_rate": 0.0067039106145251395,
+  "std_healthy_false_alarm_rate": 0.0046740783605255624,
+  "mean_fault_file_recall": 0.4880000000000001,
+  "std_fault_file_recall": 0.18633303518163385,
+  "mean_fault_event_recall": 0.5999999999999999,
+  "std_fault_event_recall": 0.14907119849998599,
+  "mean_event_lead_days_mean": 20.241114722222225,
+  "std_event_lead_days_mean": 6.400641917981264
+}
