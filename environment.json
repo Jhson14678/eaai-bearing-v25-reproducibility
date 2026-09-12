@@ -3,5 +3,16 @@
   "numpy": "2.4.4",
   "scipy": "1.17.1",
   "torch": "2.11.0+cpu",
-  "device": "CPU"
+  "device": "CPU",
+  "os": "Windows-11-10.0.26200-SP0",
+  "machine": "AMD64",
+  "cpu_count": 16,
+  "torch_num_threads": 10,
+  "random_seeds": [
+    11,
+    22,
+    33,
+    44,
+    55
+  ]
 }

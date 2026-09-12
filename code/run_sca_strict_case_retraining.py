@@ -17,17 +17,56 @@ CODE=Path(__file__).resolve().parent
 sys.path.insert(0,str(CODE))
 if not (CODE/'run_hust_zero_shot_models.py').exists():
     sys.path.insert(0,str(ROOT/'eaai_three_reviews_20260910'/'packet'))
-from scipy.signal import hilbert, resample_poly
+from scipy.signal import hilbert, resample_poly, butter, sosfiltfilt
 from run_hust_zero_shot_models import DirectMLP, train as train_direct, predict, aggregate, metrics, seed_all
 default_field=ROOT/'revision_stage12_20260912'/'sca_field_raw' if (ROOT/'revision_stage12_20260912'/'sca_field_raw').exists() else ROOT/'sca_field_raw'
 default_out=ROOT/'revision_stage12_20260912'/'sca_field_results_strict' if (ROOT/'revision_stage12_20260912').exists() else ROOT/'results'/'strict_case_retraining'
 FIELD=Path(os.environ.get('SCA_FIELD_ROOT',str(default_field))); OUT=Path(os.environ.get('SCA_OUTPUT_ROOT',str(default_out))); OUT.mkdir(parents=True,exist_ok=True)
 
-def feat(x,sr,shaft):
+def _normalize(v):
+    v=np.asarray(v,dtype=np.float32)
+    return (v-v.mean())/(v.std()+1e-6)
+
+def feat_native(x,sr,shaft):
+    """Extract order-envelope features without reconstructing high frequencies.
+
+    Each record contributes up to ten native one-second windows. A conservative
+    0.5--0.45*Nyquist band-pass is applied before the Hilbert transform; orders
+    above the measurable band are zero-filled rather than extrapolated.
+    """
+    sr=max(float(sr),1.0); shaft=max(float(shaft),1e-6)
+    x=np.asarray(x,dtype=np.float64).reshape(-1); n=max(1,int(round(sr)))
+    centers=np.linspace(.10,20.0,100); fs=[]
+    try:
+        hi=min(0.45*sr,0.45*sr) # Hz; below Nyquist with guard band
+        lo=min(0.5,0.25*shaft)
+        if hi>lo*1.05 and hi < sr/2:
+            sos=butter(4,[lo/(sr/2),hi/(sr/2)],btype='bandpass',output='sos')
+        else:
+            sos=None
+    except Exception:
+        sos=None
+    for i in range(min(10,x.size//n)):
+        w=x[i*n:(i+1)*n]; w=w-w.mean()
+        if sos is not None:
+            try: w=sosfiltfilt(sos,w)
+            except Exception: pass
+        env=np.abs(hilbert(w)); raw=np.abs(np.fft.rfft(env)); freq=np.fft.rfftfreq(n,d=1.0/sr)
+        order=freq/shaft; valid=(order>=centers[0])&(order<=min(20.0,0.45*sr/shaft))
+        s=np.zeros_like(centers,dtype=np.float64)
+        if np.any(valid): s=np.interp(centers,order[valid],np.log1p(raw[valid]),left=0.0,right=0.0)
+        fs.append(_normalize(s))
+    return np.mean(fs,axis=0).astype(np.float32) if fs else np.zeros(100,dtype=np.float32)
+
+def feat_upsample_legacy(x,sr,shaft):
+    """Legacy common-grid feature retained only for sensitivity comparison."""
     z=resample_poly(np.asarray(x,dtype=np.float64).reshape(-1),51200,max(1,int(round(float(sr))))); fs=[]
     for i in range(min(10,z.size//51200)):
-        w=z[i*51200:(i+1)*51200]; w=w-w.mean(); raw=np.abs(np.fft.rfft(np.abs(hilbert(w)))); freq=np.fft.rfftfreq(51200,d=1.0/51200.0); order=freq/max(float(shaft),1e-6); centers=np.linspace(.10,20.0,100); s=np.interp(centers,order,np.log1p(raw)).astype(np.float32); fs.append((s-s.mean())/(s.std()+1e-6))
+        w=z[i*51200:(i+1)*51200]; w=w-w.mean(); raw=np.abs(np.fft.rfft(np.abs(hilbert(w)))); freq=np.fft.rfftfreq(51200,d=1.0/51200.0); order=freq/max(float(shaft),1e-6); centers=np.linspace(.10,20.0,100); s=np.interp(centers,order,np.log1p(raw),left=0.0,right=0.0).astype(np.float32); fs.append(_normalize(s))
     return np.mean(fs,axis=0).astype(np.float32) if fs else np.zeros(100,dtype=np.float32)
+
+FEATURE_MODE=os.environ.get('SCA_FEATURE_MODE','native').lower()
+feat=feat_native if FEATURE_MODE=='native' else feat_upsample_legacy
 
 def load_test_only():
     rows=[]
@@ -58,6 +97,7 @@ def case_metrics(rows, probs, th):
     for r,p in zip(rows,probs): by[r['case']].append((r,p))
     event_leads=[]; fault_cases=0; detected_fault=0
     for case,vals in by.items():
+        vals=sorted(vals,key=lambda v: v[0]['timestamp'])
         truth=np.asarray([v[0]['y'] for v in vals]); pred=np.asarray([v[1] for v in vals])>=th
         is_fault=bool(np.any(truth.sum(1)>0)); detected=bool(np.any(pred))
         if is_fault:
@@ -74,7 +114,11 @@ def main():
     train=[]; tune=[]; hold=[]
     split_info={}
     for case,rs in by.items():
-        rs=sorted(rs,key=lambda r:r['timestamp']); n=len(rs); a=int(n*.56); b=int(n*.70); train.extend(rs[:a]); tune.extend(rs[a:b]); hold.extend(rs[b:]); split_info[case]={'n':n,'train':a,'tune':b-a,'hold':n-b,'first':rs[0]['timestamp'],'adapt_end':rs[b-1]['timestamp'],'hold_start':rs[b]['timestamp'],'last':rs[-1]['timestamp'],'toDate':rs[0]['event_date']}
+        rs=sorted(rs,key=lambda r:r['timestamp']); n=len(rs); ts=np.array([datetime.fromisoformat(r['timestamp'].replace('Z','')) for r in rs]); t0,t1=ts[0],ts[-1]; t56=t0+(t1-t0)*.56; t70=t0+(t1-t0)*.70
+        tr=[r for r,t in zip(rs,ts) if t<=t56]; tu=[r for r,t in zip(rs,ts) if t>t56 and t<=t70]; ho=[r for r,t in zip(rs,ts) if t>t70]
+        if not tr or not tu or not ho: raise RuntimeError(f'empty time split for {case}')
+        train.extend(tr); tune.extend(tu); hold.extend(ho)
+        split_info[case]={'n':n,'train':len(tr),'tune':len(tu),'hold':len(ho),'first':rs[0]['timestamp'],'train_end':tr[-1]['timestamp'],'tune_end':tu[-1]['timestamp'],'hold_start':ho[0]['timestamp'],'last':rs[-1]['timestamp'],'toDate':rs[0]['event_date'],'feature_mode':FEATURE_MODE}
     print('rows',len(rows),'train',len(train),'tune',len(tune),'hold',len(hold),flush=True)
     runs=[]
     for seed in [11,22,33,44,55]:
@@ -89,7 +133,7 @@ def main():
             return out
         (OUT/f'train_tune_predictions_seed_{seed}.json').write_text(json.dumps({'seed':seed,'threshold':th,'tune_records':pack(tune,pt,False)},ensure_ascii=False),encoding='utf8')
         (OUT/f'holdout_predictions_seed_{seed}.json').write_text(json.dumps({'seed':seed,'threshold':th,'holdout_records':pack(hold,ph,True)},ensure_ascii=False),encoding='utf8')
-    out={'dataset':'SCA bearing dataset V1','doi':'10.17632/tdn96mkkpt.1','protocol':'test-only case-level chronological split; no post-replacement train data; first 56% train, next 14% threshold tuning, final 30% holdout; DS/FS from each case share the same split','split_info':split_info,'runs':runs}
+    out={'dataset':'SCA bearing dataset V1','doi':'10.17632/tdn96mkkpt.1','protocol':'test-only case-level chronological split; no post-replacement train data; elapsed-time 56% train, next 14% threshold tuning, final 30% holdout; DS/FS from each case share the same split; native-rate band-limited order-envelope features by default','feature_mode':FEATURE_MODE,'split_info':split_info,'runs':runs}
     for key in ['macro_f1','mean_set_jaccard','exact_set_match','healthy_false_alarm_rate','fault_file_recall','fault_event_recall','event_lead_days_mean']:
         vals=[r[key] for r in runs if r.get(key) is not None]; out['mean_'+key]=float(np.mean(vals)); out['std_'+key]=float(np.std(vals,ddof=1)) if len(vals)>1 else None
     (OUT/'strict_results.json').write_text(json.dumps(out,ensure_ascii=False,indent=2),encoding='utf8'); print(json.dumps({k:out[k] for k in out if k.startswith('mean_') or k.startswith('std_')},ensure_ascii=False))
