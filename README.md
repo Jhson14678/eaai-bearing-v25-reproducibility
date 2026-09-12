@@ -16,6 +16,8 @@ The strict result is Macro-F1 = 0.5116 (SD 0.0245), Jaccard = 0.8512, exact set 
 
 The proposed non-negative candidate was also retrained under the identical protocol. It obtained Macro-F1 = 0.5053 (SD 0.0969), fault-record recall = 0.4880, and healthy-record false-alarm rate = 0.0067. It did not outperform DirectMLP in this small field comparison, so the field experiment is not presented as evidence of candidate-model superiority.
 
+`code/run_sca_native_feature_control.py` provides a sensitivity control using native sampling rates and a constant condition input. It obtains Macro-F1 = 0.4401 (SD 0.0117), fault-record recall = 0.6213, and healthy-record false-alarm rate = 0.1553. This control changes the feature/window definition and is reported only as evidence that the field result is sensitive to the signal protocol.
+
 ## Archive step before submission
 
 The public archive is available at <https://github.com/Jhson14678/eaai-bearing-v25-reproducibility>. The manuscript Data Availability statement cites this URL.
