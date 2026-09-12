@@ -41,7 +41,7 @@ def load_test_only():
                 if int(y)<0 or float(ss)<=0 or float(rr)<=0: continue
                 yy=np.zeros(3,dtype=np.float32)
                 if int(y) in (1,2,3): yy[{1:0,3:1,2:2}[int(y)]]=1.0
-                speed=float(rr)/60.0; li=int(np.argmin(np.abs(np.asarray([24.9,25.0,25.1])-speed))); c=np.zeros(3,dtype=np.float32); c[li]=1.0
+                speed=float(rr)/60.0; c=np.asarray([1.,0.,0.],dtype=np.float32)  # SCA has no HUST load labels; no load-code prior is used.
                 rows.append({'x':feat(x,float(ss),speed),'c':c,'y':yy,'file':f'{case}_{pos}_{i:03d}','case':case,'group':f'{case}_{pos}','pos':pos,'state':('N' if int(y)==0 else str(int(y))),'timestamp':str(tm).strip(),'event_date':to_date})
     return rows
 
