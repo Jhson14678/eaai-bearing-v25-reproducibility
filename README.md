@@ -8,11 +8,11 @@ The SCA bearing dataset V1 is publicly available from Mendeley Data (DOI: 10.176
 
 ## Frozen protocol
 
-The field retraining protocol trains a fixed DirectMLP architecture using the first 70% of each SCA test group in chronological order plus case 1 post-replacement healthy train records. The final 30% is an untouched time-out holdout. Thresholds are selected from the adaptation segment. Five seeds (11, 22, 33, 44, 55) are retained. `results/retraining/holdout_predictions_seed_*.json` contains probabilities, labels, timestamps, groups, and binary predictions for every held-out record.
+The strict field retraining protocol uses only case 1–3 `test.mat` files. DS and FS records from each case share one chronological split. The first 56% is used to train a fixed DirectMLP, the next 14% tunes the threshold, and the final 30% is an untouched holdout. Post-replacement `case1_train.mat` is retained only for chronology auditing and is excluded from the main result. Five seeds (11, 22, 33, 44, 55) are retained. `results/strict_case_retraining/holdout_predictions_seed_*.json` contains probabilities, labels, timestamps, case, sensor position, and binary predictions for every held-out record.
 
 ## Reported result
 
-Mean Macro-F1 = 0.5033 (SD 0.0263), Jaccard = 0.8319, exact set match = 0.8319, healthy-record false-alarm rate = 0, fault-record recall = 0.5453, fault-event recall = 1.0 across three held-out fault groups, and mean warning lead = 28.5 days. The result supports conditional utility after target-site retraining; the small number of field groups still does not establish universal field effectiveness.
+The strict result is Macro-F1 = 0.5116 (SD 0.0245), Jaccard = 0.8512, exact set match = 0.8512, healthy-record false-alarm rate = 0.0034, fault-record recall = 0.5040, and device-case event recall = 2/3. The two detected case events have lead times of 37.4 and 8.8 days, respectively. The result supports only retrospective conditional utility after same-case supervised retraining; it does not establish cross-device or universal field effectiveness.
 
 ## Archive step before submission
 
