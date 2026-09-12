@@ -1,0 +1,22 @@
+[
+  {
+    "filename": "case1_test.mat",
+    "bytes": 33961176,
+    "sha256": "ab09c1c4a2cbb628ad25e3615261cbd8058941bdfac23bf13c1e72f803661bc1"
+  },
+  {
+    "filename": "case1_train.mat",
+    "bytes": 33305616,
+    "sha256": "af1a6c38d038675bb18942be4d4b3c7ea04057abc9613249733fec254d9782a1"
+  },
+  {
+    "filename": "case2_test.mat",
+    "bytes": 51135528,
+    "sha256": "cf84ca5235ada3fc10cf9e86c57b70f9d6d874d2552d1157e1a88d92806fa613"
+  },
+  {
+    "filename": "case3_test.mat",
+    "bytes": 14101904,
+    "sha256": "6f7f082fc23e4e380c081c9bfef4c9e9eb5263c2bf67a03654ef76ec24876b4b"
+  }
+]

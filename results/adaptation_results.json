@@ -1,0 +1,104 @@
+{
+  "dataset": "SCA bearing dataset V1",
+  "doi": "10.17632/tdn96mkkpt.1",
+  "protocol": "HUST pretraining then supervised target-domain update on first 70% chronological measurements per test group; case1 post-replacement train data included only in adaptation; final 30% held out",
+  "runs": [
+    {
+      "threshold": 0.86,
+      "per_component_f1": [
+        0.0,
+        0.9473684210526315,
+        0.0
+      ],
+      "macro_f1": 0.3157894736842105,
+      "mean_set_jaccard": 0.7315175097276264,
+      "exact_set_match": 0.7315175097276264,
+      "n_files": 257,
+      "n_groups": 6,
+      "seed": 11,
+      "healthy_false_alarm_rate": 0.006172839506172839,
+      "fault_file_recall": 0.28421052631578947,
+      "event_lead_days_mean": 12.62471556712963,
+      "event_lead_cases": 2
+    },
+    {
+      "threshold": 0.9,
+      "per_component_f1": [
+        0.0,
+        0.8679245283018868,
+        0.0
+      ],
+      "macro_f1": 0.2893081761006289,
+      "mean_set_jaccard": 0.7159533073929961,
+      "exact_set_match": 0.7159533073929961,
+      "n_files": 257,
+      "n_groups": 6,
+      "seed": 22,
+      "healthy_false_alarm_rate": 0.006172839506172839,
+      "fault_file_recall": 0.24210526315789474,
+      "event_lead_days_mean": 12.62471556712963,
+      "event_lead_cases": 2
+    },
+    {
+      "threshold": 0.88,
+      "per_component_f1": [
+        0.0,
+        0.8679245283018868,
+        0.0
+      ],
+      "macro_f1": 0.2893081761006289,
+      "mean_set_jaccard": 0.7159533073929961,
+      "exact_set_match": 0.7159533073929961,
+      "n_files": 257,
+      "n_groups": 6,
+      "seed": 33,
+      "healthy_false_alarm_rate": 0.006172839506172839,
+      "fault_file_recall": 0.24210526315789474,
+      "event_lead_days_mean": 12.62471556712963,
+      "event_lead_cases": 2
+    },
+    {
+      "threshold": 0.86,
+      "per_component_f1": [
+        0.0,
+        0.8888888888888888,
+        0.0
+      ],
+      "macro_f1": 0.2962962962962963,
+      "mean_set_jaccard": 0.7198443579766537,
+      "exact_set_match": 0.7198443579766537,
+      "n_files": 257,
+      "n_groups": 6,
+      "seed": 44,
+      "healthy_false_alarm_rate": 0.006172839506172839,
+      "fault_file_recall": 0.25263157894736843,
+      "event_lead_days_mean": 12.62471556712963,
+      "event_lead_cases": 2
+    },
+    {
+      "threshold": 0.88,
+      "per_component_f1": [
+        0.0,
+        0.8679245283018868,
+        0.0
+      ],
+      "macro_f1": 0.2893081761006289,
+      "mean_set_jaccard": 0.7159533073929961,
+      "exact_set_match": 0.7159533073929961,
+      "n_files": 257,
+      "n_groups": 6,
+      "seed": 55,
+      "healthy_false_alarm_rate": 0.006172839506172839,
+      "fault_file_recall": 0.24210526315789474,
+      "event_lead_days_mean": 12.62471556712963,
+      "event_lead_cases": 2
+    }
+  ],
+  "mean_macro_f1": 0.2960020596564787,
+  "std_macro_f1": 0.011467917861178166,
+  "mean_jaccard": 0.7198443579766537,
+  "mean_exact": 0.7198443579766537,
+  "mean_healthy_false_alarm_rate": 0.006172839506172839,
+  "mean_fault_file_recall": 0.25263157894736843,
+  "mean_event_lead_days": 12.62471556712963
+}
